@@ -4,4 +4,4 @@ Practice worksheets utilizing SQL
 
 Skills used: 
 
-Joins, CTEs, Ranking with Partition, Group By, Order By, Data Analysis
+Joins, CTEs, Aggreations, Counts, Cases, Renaming Variables, Ranking, Group By, Order By, Limit, Calculations

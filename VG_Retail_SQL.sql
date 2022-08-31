@@ -145,3 +145,21 @@ order by Class_Count Desc;
 Medium, High), please write a query that identifies the top 3 most popular
 video games for each of the classification criteria.*/
 
+with Sales_Classification as(
+ 	Select Name, publisher, genre, global_sales, na_sales, eu_sales, jp_sales,
+Case
+	When global_sales <= 2 then 'Low Sales'
+   when global_sales <= 5 then 'Medium Sales'
+   else 'High Sales'
+    end as Classification_Criteria
+From VG_Retail_Sales),
+
+Rankings as (
+	select *,
+	row_number() over (partition by classification_criteria order by global_sales desc) as Sales_Rank 
+/*Decided to use row_number instead of rank or dense_rank to avoid duplicate ranks (multiple 1s for example) since many of the games had the same global sales number. Adding more decimal points to global_sales or presenting global_sales as the whole number instead of in millions would have made the ranking as accurate as possible.*/
+	from Sales_Classification)
+
+select *
+from rankings
+where sales_rank<=3;

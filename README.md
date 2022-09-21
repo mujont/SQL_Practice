@@ -1,6 +1,6 @@
 # SQL_Work
 
-Practice worksheets utilizing SQL
+Practice worksheets and projects utilizing SQL
 
 Skills used: 
 
